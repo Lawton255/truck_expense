@@ -26,7 +26,26 @@
             <form string="Truck Expenses">
                 <sheet>
                     <group col="2" string="General Expenses">
-                        <group>
+                        <notebook>
+                            <page string="Expenses" name="expenses_page">
+                                <group>
+                                    <field name="exp_product" widget="one2many_list">
+                                        <tree string="Expenses Details" editable="bottom">
+                                            <field name="exp_trip_no" />
+                                            <field name="exp_truck" />
+                                            <field name="employee" />
+                                            <field name="date" />
+                                            <field name="expense_type" />
+                                            <field name="exp_product" />
+                                            <field name="exp_amount" />
+                                            <field name="qty" />
+                                            <field name="exp_total" sum="Price"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                        <!--group>
                             <field name="exp_trip_no" />
                             <field name="exp_truck" />
                             <field name="employee" />
@@ -38,7 +57,7 @@
                             <field name="exp_amount" />
                             <field name="qty" />
                             <field name="exp_total" />
-                        </group>
+                        </group-->
                     </group>
                 </sheet>
             </form>

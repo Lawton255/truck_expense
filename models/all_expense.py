@@ -24,11 +24,11 @@ class TruckExpense(models.Model):
     expense_type = fields.Selection([
                 ('trip', 'Trip'), 
                 ('workshop', 'Workshop'), 
-                ('driver', 'Driver')])
-    exp_product  = fields.Many2one('exp.product')
-    exp_amount  = fields.Float(string="Price")
+                ('driver', 'Driver')], required=True)
+    exp_product  = fields.Many2one('exp.product', string="Expense name", required=True)
+    exp_amount  = fields.Float(string="Price", required=True)
     qty         = fields.Float(string="Quantity" , default='1.0')
-    exp_total   = fields.Float(string="Total", compute="_compute_total_expense")
+    exp_total   = fields.Float(string="Total", compute="_compute_total_expense", required=True)
     date        = fields.Date(string="Date")
     employee    = fields.Many2one('res.partner', string="Responsible", required=True)
 
