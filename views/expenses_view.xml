@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <!--Tree view-->
+    <record id="truck_expense_tree_view" model="ir.ui.view">
+         <field name="model">all.expense</field>
+        <field name="arch" type="xml">
+            <tree string="Truck Expenses">
+                <field name="date" />
+                <field name="exp_trip_no" />
+                <field name="exp_truck" />
+                <field name="expense_type" />
+                <field name="exp_product" />
+                <field name="exp_amount" />
+                <field name="qty" />
+                <field name="exp_total" sum="Total"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--Form view-->
+    <record id="truck_expense_view_form" model="ir.ui.view">
+        <field name="name">truck.expense.view.form</field>
+        <field name="model">all.expense</field>
+        <field name="arch" type="xml">
+            <form string="Truck Expenses">
+                <sheet>
+                    <group col="2" string="General Expenses">
+                        <group>
+                            <field name="exp_trip_no" />
+                            <field name="exp_truck" />
+                            <field name="employee" />
+                            <field name="date" />
+                        </group>
+                        <group>
+                            <field name="expense_type" />
+                            <field name="exp_product" />
+                            <field name="exp_amount" />
+                            <field name="qty" />
+                            <field name="exp_total" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--Menu action-->
+    <record id="truck_expense_menu_action" model="ir.actions.act_window">
+         <field name="name">Truck Expense</field>
+        <field name="res_model">all.expense</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create"> Create Trip, Workshop and Driver Expenses
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="truck_expense_menu"
+        name="Truck Expenses"
+        sequence="2"/>
+    <menuitem
+        id="sub_truck_expense_menu"
+        name="Expenses"
+        action="truck_expense_menu_action"
+        parent="truck_expense_menu"
+        sequence="1"/>
+    </data>
+</odoo>
